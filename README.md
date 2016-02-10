@@ -1,12 +1,12 @@
-# Sinon.JS Assertions for Chai
+# simple-mock Assertions for Chai
 
-**Sinon–Chai** provides a set of custom assertions for using the [Sinon.JS][] spy, stub, and mocking framework with the
-[Chai][] assertion library. You get all the benefits of Chai with all the powerful tools of Sinon.JS.
+**Simple–Chai** provides a set of custom assertions for using the [simple-mock][] spy, stub, and mocking framework with the
+[Chai][] assertion library. You get all the benefits of Chai with all the powerful tools of simple-mock.
 
-Instead of using Sinon.JS's assertions:
+Instead of using simple-mock's assertions:
 
 ```javascript
-sinon.assertCalledWith(mySpy, "foo");
+simple.assertCalledWith(mySpy, "foo");
 ```
 
 or awkwardly trying to use Chai's `should` or `expect` interfaces on spy properties:
@@ -25,14 +25,14 @@ expect(mySpy).to.have.been.calledWith("foo");
 
 ## Assertions
 
-All of your favorite Sinon.JS assertions made their way into Sinon–Chai. We show the `should` syntax here; the `expect`
+All of your favorite simple-mock assertions made their way into Simple–Chai. We show the `should` syntax here; the `expect`
 equivalent is also available.
 
 <table>
     <thead>
         <tr>
-            <th>Sinon.JS property/method</th>
-            <th>Sinon–Chai assertion</th>
+            <th>simple-mock property/method</th>
+            <th>Simple–Chai assertion</th>
         </tr>
     </thead>
     <tbody>
@@ -129,13 +129,13 @@ individual spy calls, stubs, and mocks as well.
 
 Note that you can negate any assertion with Chai's `.not`. E. g. for `notCalled` use `spy.should.have.not.been.called`.
 
-For `assert` interface there is no need for this library. You can install [Sinon.JS assertions][sinonassertions] right into Chai's `assert` object with `expose`:
+For `assert` interface there is no need for this library. You can install [simple-mock assertions][simpleassertions] right into Chai's `assert` object with `expose`:
 
 ```javascript
 var chai = require("chai");
-var sinon = require("sinon");
+var simple = require("simple-mock");
 
-sinon.assert.expose(chai.assert, { prefix: "" });
+simple.assert.expose(chai.assert, { prefix: "" });
 ```
 
 ## Examples
@@ -145,10 +145,10 @@ Using Chai's `should`:
 ```javascript
 "use strict";
 var chai = require("chai");
-var sinon = require("sinon");
-var sinonChai = require("sinon-chai");
+var simple = require("simple-mock");
+var simpleChai = require("simple-chai");
 chai.should();
-chai.use(sinonChai);
+chai.use(simpleChai);
 
 function hello(name, cb) {
     cb("hello " + name);
@@ -156,7 +156,7 @@ function hello(name, cb) {
 
 describe("hello", function () {
     it("should call callback with correct greeting", function () {
-        var cb = sinon.spy();
+        var cb = simple.spy();
 
         hello("foo", cb);
 
@@ -170,10 +170,10 @@ Using Chai's `expect`:
 ```javascript
 "use strict";
 var chai = require("chai");
-var sinon = require("sinon");
-var sinonChai = require("sinon-chai");
+var simple = require("simple-mock");
+var simpleChai = require("simple-chai");
 var expect = chai.expect;
-chai.use(sinonChai);
+chai.use(simpleChai);
 
 function hello(name, cb) {
     cb("hello " + name);
@@ -181,7 +181,7 @@ function hello(name, cb) {
 
 describe("hello", function () {
     it("should call callback with correct greeting", function () {
-        var cb = sinon.spy();
+        var cb = simple.spy();
 
         hello("foo", cb);
 
@@ -194,55 +194,55 @@ describe("hello", function () {
 
 ### Node
 
-Do an `npm install sinon-chai` to get up and running. Then:
+Do an `npm install simple-chai` to get up and running. Then:
 
 ```javascript
 var chai = require("chai");
-var sinonChai = require("sinon-chai");
+var simpleChai = require("simple-chai");
 
-chai.use(sinonChai);
+chai.use(simpleChai);
 ```
 
 You can of course put this code in a common test fixture file; for an example using [Mocha][], see
-[the Sinon–Chai tests themselves][fixturedemo].
+[the Simple–Chai tests themselves][fixturedemo].
 
 ### AMD
 
-Sinon–Chai supports being used as an [AMD][] module, registering itself anonymously (just like Chai). So, assuming you
-have configured your loader to map the Chai and Sinon–Chai files to the respective module IDs `"chai"` and
-`"sinon-chai"`, you can use them as follows:
+Simple–Chai supports being used as an [AMD][] module, registering itself anonymously (just like Chai). So, assuming you
+have configured your loader to map the Chai and Simple–Chai files to the respective module IDs `"chai"` and
+`"simple-chai"`, you can use them as follows:
 
 ```javascript
 define(function (require, exports, module) {
     var chai = require("chai");
-    var sinonChai = require("sinon-chai");
+    var simpleChai = require("simple-chai");
 
-    chai.use(sinonChai);
+    chai.use(simpleChai);
 });
 ```
 
 ### `<script>` tag
 
-If you include Sinon–Chai directly with a `<script>` tag, after the one for Chai itself, then it will automatically plug
-in to Chai and be ready for use. Note that you'll want to get the latest browser build of Sinon.JS as well:
+If you include Simple–Chai directly with a `<script>` tag, after the one for Chai itself, then it will automatically plug
+in to Chai and be ready for use. Note that you'll want to get the latest browser build of simple-mock as well:
 
 ```html
 <script src="chai.js"></script>
-<script src="sinon-chai.js"></script>
-<script src="sinon.js"></script>
+<script src="simple-chai.js"></script>
+<script src="simple.js"></script>
 ```
 
 ### Ruby on Rails
 
-Thanks to [Cymen Vig][], there's now [a Ruby gem][] of Sinon–Chai that integrates it with the Rails asset pipeline!
+Thanks to [Cymen Vig][], there's now [a Ruby gem][] of Simple–Chai that integrates it with the Rails asset pipeline!
 
 
-[Sinon.JS]: http://sinonjs.org/
+[simple-mock]: http://simplejs.org/
 [Chai]: http://chaijs.com/
-[spymethods]: http://sinonjs.org/docs/#spies-api
-[sinonassertions]: http://sinonjs.org/docs/#assertions
+[spymethods]: http://simplejs.org/docs/#spies-api
+[simpleassertions]: http://simplejs.org/docs/#assertions
 [Mocha]: http://visionmedia.github.com/mocha/
-[fixturedemo]: https://github.com/domenic/sinon-chai/tree/master/test/
+[fixturedemo]: https://github.com/domenic/simple-chai/tree/master/test/
 [AMD]: https://github.com/amdjs/amdjs-api/wiki/AMD
 [Cymen Vig]: https://github.com/cymen
-[a Ruby gem]: https://github.com/cymen/sinon-chai-rails
+[a Ruby gem]: https://github.com/cymen/simple-chai-rails
