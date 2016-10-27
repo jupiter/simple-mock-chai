@@ -1,5 +1,7 @@
 # simple-mock Assertions for Chai
 
+**INCOMPLETE: NOT READY FOR USE**
+
 **Simple–Chai** provides a set of custom assertions for using the [simple-mock][] spy, stub, and mocking framework with the
 [Chai][] assertion library. You get all the benefits of Chai with all the powerful tools of simple-mock.
 
